@@ -5,11 +5,9 @@ class Machine extends React.Component {
     let s2 = this.props.s2;
     let s3 = this.props.s3;
 
-    let result = "";
+    let result = "Loss";
 
-    if (s1 === s2 && s1 === s3) {
-      result = "Success";
-    } else result = "Loss";
+    if (s1 === s2 && s1 === s3) result = "Success";
 
     return (
       <div>
