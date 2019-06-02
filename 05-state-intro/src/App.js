@@ -1,11 +1,11 @@
 import React from "react";
+import NumClicker from "./NumClicker";
 import "./App.css";
-import Game from "./Game";
 
 function App() {
   return (
     <div className="App">
-      <Game />
+      <NumClicker />
     </div>
   );
 }
