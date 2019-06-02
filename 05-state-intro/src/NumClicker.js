@@ -23,7 +23,7 @@ class NumClicker extends Component {
     let clickButton = <button onClick={this.setRandom}>Click Me!</button>;
 
     return (
-      <div>
+      <div class="NumClicker">
         <h1>NumCliker - Get 7...</h1>
         <h2>Random mumber chosen : {randNum}</h2>
         {gameResult ? "You Win!" : clickButton}

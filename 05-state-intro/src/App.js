@@ -1,11 +1,11 @@
 import React from "react";
-import NumClicker from "./NumClicker";
 import "./App.css";
+import RGBClicker from "./RGBClicker";
 
 function App() {
   return (
     <div className="App">
-      <NumClicker />
+      <RGBClicker />
     </div>
   );
 }

@@ -1,0 +1,25 @@
+.body {
+  background-color: red;
+}
+
+.click-boxes {
+  display: flex;
+  flex-direction: row;
+  min-height: 10vh;
+  flex-wrap: wrap;
+}
+
+.red-bg {
+  background-color: rgb(255, 143, 143);
+  flex-grow: 1;
+}
+
+.green-bg {
+  background-color: rgb(127, 250, 127);
+  flex-grow: 1;
+}
+
+.blue-bg {
+  background-color: rgb(155, 155, 255);
+  flex-grow: 1;
+}
