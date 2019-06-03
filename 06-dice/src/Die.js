@@ -8,14 +8,23 @@ class Die extends Component {
   }
 
   render() {
+    let diceClass = [
+      "fa fa-dice-one",
+      "fa fa-dice-two",
+      "fa fa-dice-three",
+      "fa fa-dice-four",
+      "fa fa-dice-five",
+      "fa fa-dice-six"
+    ];
+
+    let chosen = this.props.side;
+
     return (
-      <div className="Die">
-        <h1>Die Component</h1>
+      <span className="Die">
         <span className="show-dice">
-          <i className="fa fa-dice-one" />
-          <i className="fa fa-dice-two" />
+          <i className={diceClass[chosen]} />
         </span>
-      </div>
+      </span>
     );
   }
 }
