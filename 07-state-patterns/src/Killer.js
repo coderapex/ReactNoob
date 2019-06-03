@@ -15,35 +15,52 @@ class Killer extends Component {
 
   singleKill = e => {
     // updating single counter
-    this.setState({ single: this.state.single + 1 });
+    // this.setState({ single: this.state.single + 1 });
+    this.setState(curSt => {
+      return { single: curSt.single + 1 };
+    });
 
     // updating total counter
-    this.setState({ count: this.state.count + 1 });
-  };
-
-  tripleKill = e => {
-    // updating triple counter
-    this.setState({ triple: this.state.triple + 3 });
-
-    // updating total counter - DOES NOT WORK
     // this.setState({ count: this.state.count + 1 });
-    // this.setState({ count: this.state.count + 1 });
-    // this.setState({ count: this.state.count + 1 });
-
-    // use the "callback form" to setState()
-    // SYNTAX : this.setState(callback)
-    // we pass current state as parameter in callback
-    // then we return the new value which we update using currentState values
-    this.setState(currentState => {
-      return { count: currentState.count + 1 };
-    });
-    this.setState(currentState => {
-      return { count: currentState.count + 1 };
-    });
-    this.setState(currentState => {
-      return { count: currentState.count + 1 };
+    this.setState(curSt => {
+      return { count: curSt.count + 1 };
     });
   };
+
+  // tripleKill = e => {
+  //   // updating triple counter
+  //   this.setState({ triple: this.state.triple + 3 });
+
+  //   // updating total counter - DOES NOT WORK
+  //   // this.setState({ count: this.state.count + 1 });
+  //   // this.setState({ count: this.state.count + 1 });
+  //   // this.setState({ count: this.state.count + 1 });
+
+  //   // use the "callback form" to setState()
+  //   // SYNTAX : this.setState(callback)
+  //   // we pass current state as parameter in callback
+  //   // then we return the new value which we update using currentState values
+  //   this.setState(currentState => {
+  //     return { count: currentState.count + 1 };
+  //   });
+  //   this.setState(currentState => {
+  //     return { count: currentState.count + 1 };
+  //   });
+  //   this.setState(currentState => {
+  //     return { count: currentState.count + 1 };
+  //   });
+  // };
+
+  // refactoring the code
+  updateTriple(curSt) {
+    let totalCount = curSt.count + 3;
+    let tripleCount = curSt.triple + 3;
+    return { count: totalCount, triple: tripleCount };
+  }
+
+  tripleKill() {
+    this.setState(this.updateTriple);
+  }
 
   render() {
     return (
