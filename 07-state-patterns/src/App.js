@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import Killer from "./Killer";
+import IconList from "./IconList";
 
 function App() {
   return (
     <div className="App">
       <h1>State Patterns</h1>
-      <Killer />
+      <IconList />
     </div>
   );
 }
