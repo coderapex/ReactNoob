@@ -1,12 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import CoinFlip from "./CoinFlip";
+import ColorBoxContainer from "./ColorBoxContainer";
 
 function App() {
   return (
     <div className="App">
-      <CoinFlip />
+      <ColorBoxContainer />
     </div>
   );
 }
