@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./CoinFlip.css";
+import CoinDisplay from "./CoinDisplay";
+import FlipCounter from "./FlipCounter";
 class CoinFlip extends Component {
   static defaultProps = {
     headsSrc:
@@ -54,20 +56,17 @@ class CoinFlip extends Component {
   render() {
     return (
       <div>
-        <br />
-        {/* coin image */}
-        <img className="coin-img" src={this.state.coinImg} />
-
         {/* result count */}
-        <div>
-          <h3>
-            Flips: {this.state.flipCount} Heads: {this.state.headCount} Tails:{" "}
-            {this.state.tailCount}
-          </h3>
-        </div>
+        <FlipCounter
+          total={this.state.flipCount}
+          heads={this.state.headCount}
+          tails={this.state.tailCount}
+        />
 
         {/* button - flip coin */}
         <button onClick={this.handleClick}>Flip</button>
+
+        <CoinDisplay coinType={this.state.coinImg} />
       </div>
     );
   }
