@@ -8,6 +8,7 @@ import img4 from "./4.jpg";
 import img5 from "./5.jpg";
 import img6 from "./6.jpg";
 import shortid from "shortid";
+import { randomWord } from "./words";
 
 class Hangman extends Component {
   /** by default, allow 6 guesses and use provided gallows images. */
@@ -21,20 +22,30 @@ class Hangman extends Component {
     this.state = {
       nWrong: 0,
       guessed: new Set(),
+      guessedWord: "",
       answer: "apple",
       gameLost: 0,
       gameWon: 0
     };
     this.handleGuess = this.handleGuess.bind(this);
+    this.clickreset = this.clickreset.bind(this);
   }
 
   /** guessedWord: show current-state of word:
     if guessed letters are {a,p,e}, show "app_e" for "apple"
   */
   guessedWord() {
-    return this.state.answer
+    let finalString = this.state.answer
       .split("")
       .map(ltr => (this.state.guessed.has(ltr) ? ltr : "_"));
+
+    // this.setState(() => {
+    //   return {
+    //     guessedWord: finalString
+    //   };
+    // });
+
+    return finalString;
   }
 
   /** handleGuest: handle a guessed letter:
@@ -50,9 +61,13 @@ class Hangman extends Component {
     }));
 
     // check if guesses are over
-    if (this.state.nWrong === this.props.maxWrong - 1) {
+    if (this.state.guessed === this.state.answer) {
       this.setState(st => ({
-        gameLost: st.nWrong + 1
+        gameWon: st.gameWon + 1
+      }));
+    } else if (this.state.nWrong === this.props.maxWrong - 1) {
+      this.setState(st => ({
+        gameLost: st.gameLost + 1
       }));
     }
 
@@ -77,9 +92,25 @@ class Hangman extends Component {
         <div>
           <h4>You lost! The correct answer is:</h4>
           <h1>{this.state.answer}</h1>
+          <button className="reset-button" onClick={this.clickreset}>
+            Restart
+          </button>
         </div>
       );
     }
+  }
+
+  clickreset() {
+    this.setState(st => ({
+      nWrong: 0,
+      guessed: new Set(),
+      guessedWord: "",
+      answer: randomWord(),
+      gameLost: 0,
+      gameWon: 0
+    }));
+
+    this.generateButtons();
   }
 
   /** render: render game */
@@ -89,7 +120,7 @@ class Hangman extends Component {
       <div className="Hangman">
         <h1>Hangman</h1>
         <img src={this.props.images[this.state.nWrong]} alt={altText} />
-        <p>Number wrong: {this.state.nWrong}</p>
+        <p>Number wrong: {this.state.nWrong}/6</p>
         <p className="Hangman-word">{this.guessedWord()}</p>
 
         {/* check if gameLost or gameWon*/}
