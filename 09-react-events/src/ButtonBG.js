@@ -35,6 +35,7 @@ class ButtonBG extends Component {
     };
 
     this.choice = this.choice.bind(this);
+    this.changeColor = this.changeColor.bind(this);
   }
 
   choice(array) {
@@ -43,32 +44,30 @@ class ButtonBG extends Component {
     return rand;
   }
 
+  changeColor(newColor) {
+    this.setState({
+      bgColor: newColor
+    });
+  }
+
   render() {
     let colors = this.props.colors;
     return (
-      <div className="ButtonBG" style={{ backgroundColor: this.state.bgColor }}>
-        <button
-          onClick={this.changeBG}
-          style={{
-            background: colors[this.choice(colors)]
-          }}
-        >
-          CLick Me!
-        </button>
-        <button
-          style={{
-            background: colors[this.choice(colors)]
-          }}
-        >
-          CLick Me!
-        </button>
-        <button
-          style={{
-            background: colors[this.choice(colors)]
-          }}
-        >
-          CLick Me!
-        </button>
+      <div
+        className="button-list"
+        style={{ backgroundColor: this.state.bgColor }}
+      >
+        {this.props.colors.map(color => {
+          const colorObj = { backgroundColor: color };
+          return (
+            <button
+              style={colorObj}
+              onClick={this.changeColor.bind(this, color)}
+            >
+              Click
+            </button>
+          );
+        })}
       </div>
     );
   }
