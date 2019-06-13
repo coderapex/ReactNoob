@@ -51,7 +51,7 @@ class ButtonBG extends Component {
   }
 
   render() {
-    let colors = this.props.colors;
+    // let colors = this.props.colors;
     return (
       <div
         className="button-list"
