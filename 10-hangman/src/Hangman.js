@@ -23,7 +23,7 @@ class Hangman extends Component {
       nWrong: 0,
       guessed: new Set(),
       guessedWord: "",
-      answer: "apple",
+      answer: shortid.generate(),
       gameLost: 0,
       gameWon: 0
     };
