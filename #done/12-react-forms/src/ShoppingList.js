@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ShoppingListForm from "./ShoppingListForm";
 import uuid from "uuid/v4";
+import { strictEqual } from "assert";
 
 class ShoppingList extends Component {
   constructor(props) {
@@ -14,9 +15,8 @@ class ShoppingList extends Component {
     this.addItem = this.addItem.bind(this);
   }
   addItem(item) {
-    let newItem = { ...item, id: uuid() };
     this.setState(state => ({
-      items: [...state.items, newItem]
+      items: [...state.items, item]
     }));
   }
   renderItems() {
